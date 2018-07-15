@@ -28,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlertActivity" />
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
@@ -50,7 +49,12 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
+<<<<<<< HEAD
         <activity android:name=".PasswordActivity"></activity>
+=======
+        <activity android:name=".PasswordActivity" />
+        <activity android:name=".AlertActivity"></activity>
+>>>>>>> 8f6a677d7de3fb3c334f38f24431a9551432e135
     </application>
 
 </manifest>
