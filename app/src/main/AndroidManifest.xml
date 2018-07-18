@@ -33,7 +33,10 @@
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".EditProfileActivity" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NavigationActivity" />
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -54,7 +57,11 @@
 =======
         <activity android:name=".PasswordActivity" />
         <activity android:name=".AlertActivity"></activity>
+<<<<<<< HEAD
 >>>>>>> 8f6a677d7de3fb3c334f38f24431a9551432e135
+=======
+        <activity android:name=".SettingsActivity"/>
+>>>>>>> 2335e67c12197ee7c8bf058c6c7423ac19ce3b04
     </application>
 
 </manifest>

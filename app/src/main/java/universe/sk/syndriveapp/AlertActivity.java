@@ -35,12 +35,15 @@ public class AlertActivity extends AppCompatActivity {
                 if (isDismissed || isSent) cancel();
                 else {
                     tvTime.setText("" + millisUntilFinished / 1000);
+                    if(millisUntilFinished/1000 > 5) tvTime.setTextColor(getResources().getColor(R.color.black));
+                    else tvTime.setTextColor(getResources().getColor(R.color.red));
                 }
             }
 
             @Override
             public void onFinish() {
-                tvTime.setText("SOS Sent");
+                tvTime.setText(R.string.tv_sent);
+                tvTime.setTextColor(getResources().getColor(R.color.green));
                 fabDismiss.setEnabled(false);
                 fabSend.setEnabled(false);
             }
@@ -50,7 +53,8 @@ public class AlertActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 isSent = true;
-                tvTime.setText("SOS sent");
+                tvTime.setText(R.string.tv_sent);
+                tvTime.setTextColor(getResources().getColor(R.color.green));
                 fabSend.setEnabled(false);
                 fabDismiss.setEnabled(false);
             }
@@ -60,7 +64,8 @@ public class AlertActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 isDismissed = true;
-                tvTime.setText("Alert Dismissed");
+                tvTime.setText(R.string.tv_dismissed);
+                tvTime.setTextColor(getResources().getColor(R.color.black));
                 fabSend.setEnabled(false);
                 fabDismiss.setEnabled(false);
             }
