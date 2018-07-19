@@ -52,16 +52,9 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-<<<<<<< HEAD
-        <activity android:name=".PasswordActivity"></activity>
-=======
         <activity android:name=".PasswordActivity" />
         <activity android:name=".AlertActivity"></activity>
-<<<<<<< HEAD
->>>>>>> 8f6a677d7de3fb3c334f38f24431a9551432e135
-=======
         <activity android:name=".SettingsActivity"/>
->>>>>>> 2335e67c12197ee7c8bf058c6c7423ac19ce3b04
     </application>
 
 </manifest>
