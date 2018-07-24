@@ -37,13 +37,20 @@
     <string name="tv_change_password">Change Password</string>
     <string name="tv_about">Detects accident and reduces the rescue time!</string>
     <string name="tv_about2">Syndrive detects and measures the impact during accidents and if it goes beyond the threshold set in it, then we would contact the nearest hospital and also your near and dear ones.</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="action_save">Save</string>
     <string name="action_edit">Edit</string>
+
+    <string name="hint_emname1">1. Name</string>
+    <string name="hint_num1">Number</string>
+    <string name="hint_emname2">2. Name</string>
+    <string name="hint_num2">Number</string>
+    <string name="hint_emname3">3. Name</string>
+    <string name="hint_num3">Number</string>
+    <string name="hint_registerbtn">Register</string>
 
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>

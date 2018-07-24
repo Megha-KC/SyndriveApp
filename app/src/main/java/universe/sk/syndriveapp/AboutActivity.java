@@ -7,7 +7,8 @@ import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
 
-    private TextView tvAbout,tvAbout2;
+
+    TextView tvAbout,tvAbout2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,8 @@ public class AboutActivity extends AppCompatActivity {
         actionBar.setTitle("About");
         actionBar.setDisplayShowHomeEnabled(true);
 
-        tvAbout = (TextView)findViewById(R.id.tvAbout);
-        tvAbout2 = (TextView)findViewById(R.id.tvAbout2);
+        tvAbout = findViewById(R.id.tvAbout);
+        tvAbout2 = findViewById(R.id.tvAbout2);
+
     }
 }

@@ -93,35 +93,30 @@ public class NavigationActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
 
-           startActivity(new Intent(this,EditProfileActivity.class));
+           startActivity(new Intent(this, EditProfileActivity.class));
 
         } else if (id == R.id.nav_contacts) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain,new ProfileFragment());
             ft.commit();
 
-
         } else if (id == R.id.nav_settings) {
 
-            startActivity(new Intent(this,SettingsActivity.class));
-
+            startActivity(new Intent(this, SettingsActivity.class));
 
         } else if (id == R.id.nav_about) {
-
-            startActivity(new Intent (this,AboutActivity.class));
+            startActivity(new Intent (this, AboutActivity.class));
 
         } else if (id == R.id.nav_logout) {
             firebaseAuth.signOut();
             finish();
             startActivity(new Intent(this,MainActivity.class));
 
-
         }else if(id == R.id.nav_conatctus){
 
             ContactUsFragment contactUsFragment = new ContactUsFragment();
             FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.flMain, contactUsFragment).commit();
-        }
+            manager.beginTransaction().replace(R.id.flMain, contactUsFragment).commit();       }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
