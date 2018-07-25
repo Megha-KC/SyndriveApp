@@ -25,9 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
 import java.io.IOException;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -38,7 +36,6 @@ public class EditProfileActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private FloatingActionButton fabEdit, fabSave, fabGallery;
     CircleImageView imageView_profile_pic;
-    // private StorageReference mStorage;
     private ProgressDialog mProgressDialog;
     Uri imagePath;
 
@@ -69,7 +66,7 @@ public class EditProfileActivity extends AppCompatActivity {
         etDOB.setEnabled(false);
         etBloodGroup.setEnabled(false);
         etEmail.setEnabled(false);
-        fabSave.setEnabled(false);
+        fabSave.setVisibility(View.INVISIBLE);
 
         // mStorage = FirebaseStorage.getInstance().getReference();
         mProgressDialog = new ProgressDialog(this);         //upload progress dialog
@@ -92,7 +89,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 etBloodGroup.setText(userinfo.getBloodgroup());
                 etDOB.setText(userinfo.getUdate());
                 etEmail.setText(userinfo.getUemail());
-                // imageView_profile_pic.setImageURI(userinfo.getImageUri());
             }
 
             @Override
@@ -105,16 +101,19 @@ public class EditProfileActivity extends AppCompatActivity {
         fabEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fabEdit.setVisibility(View.INVISIBLE);
+                fabSave.setVisibility(View.VISIBLE);
                 etName.setEnabled(true);
                 etDOB.setEnabled(true);
                 etBloodGroup.setEnabled(true);
-                fabSave.setEnabled(true);
             }
         }); //end of fabEdit
         //Save User Profile into Firebase - fabSave
         fabSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fabEdit.setVisibility(View.VISIBLE);
+                fabSave.setVisibility(View.INVISIBLE);
                 String name = etName.getText().toString();
                 String email = etEmail.getText().toString();
                 String bloodgroup = etBloodGroup.getText().toString();
