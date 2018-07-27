@@ -65,8 +65,6 @@ public class RegistrationActivity extends AppCompatActivity {
                         }
                     });
 
-
-                    startActivity(new Intent(RegistrationActivity.this, NavigationActivity.class));
                 }
             }
         });
