@@ -151,12 +151,12 @@ public class NavigationActivity extends AppCompatActivity
 
            startActivity(new Intent(this, EditProfileActivity.class));
 
-        } else if (id == R.id.nav_contacts) {
+        } /* else if (id == R.id.nav_contacts) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain,new ProfileFragment());
             ft.commit();
 
-        } else if (id == R.id.nav_settings) {
+        } */ else if (id == R.id.nav_settings) {
 
             startActivity(new Intent(this, SettingsActivity.class));
 

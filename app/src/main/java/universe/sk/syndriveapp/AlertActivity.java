@@ -1,6 +1,9 @@
 package universe.sk.syndriveapp;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +27,14 @@ public class AlertActivity extends AppCompatActivity implements TextToSpeech.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setIcon(R.drawable.alert);
+        actionBar.setTitle(" Send SOS?");
+        actionBar.setDisplayUseLogoEnabled(true);
+
         tts = new TextToSpeech(AlertActivity.this, AlertActivity.this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.getString("index", "20");
 
         tvTime = findViewById(R.id.tvTime);
         fabSend = findViewById(R.id.fabSend);
@@ -33,7 +43,7 @@ public class AlertActivity extends AppCompatActivity implements TextToSpeech.OnI
         fabDismiss.setEnabled(true);
         fabSend.setEnabled(true);
 
-        long millisInFuture = 25000; //15s
+        long millisInFuture = 20000; //20s
         long countDownInterval = 1000; //1s
         new CountDownTimer(millisInFuture, countDownInterval) {
             @Override
