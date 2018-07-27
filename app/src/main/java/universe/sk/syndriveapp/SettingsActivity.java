@@ -142,7 +142,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-       
+
     }
 
     /**
