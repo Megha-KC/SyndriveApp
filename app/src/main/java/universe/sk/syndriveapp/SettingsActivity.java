@@ -140,7 +140,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
         if (actionBar != null) {
             // Show the Up button in the action bar.
-            actionBar.setIcon(R.drawable.ic_settings_black);
+            actionBar.setIcon(R.drawable.settings);
             actionBar.setTitle("Settings");
             actionBar.setDisplayUseLogoEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
