@@ -21,11 +21,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText etName,etEmailsign,etPassign,etConfirmPassign,etBloodgroup,etDate;
+    private EditText etName,etEmailsign,etPassign,etConfirmPassign,etBloodgroup,etDate, etEmName1, etEmName2, etEmName3, etEmNum1, etEmNum2, etEmNum3;
     private Button btn_register;
     private TextView tvExist;
     private FirebaseAuth firebaseAuth;
     String name,email,password,bloodgrp,date;
+    String emname1,emname2,emname3;
+    String emnum1,emnum2,emnum3;
 
 
     @Override
@@ -55,8 +57,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 adduser();
                                 finish();
-                                startActivity(new Intent(RegistrationActivity.this, AddContacts.class));
-                                //Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(RegistrationActivity.this, NavigationActivity.class));
+                                Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                             }
                             else
                                 Toast.makeText(RegistrationActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
@@ -64,7 +66,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     });
 
 
-                    //startActivity(new Intent(RegistrationActivity.this,NavigationActivity.class));
+                    startActivity(new Intent(RegistrationActivity.this, NavigationActivity.class));
                 }
             }
         });
@@ -86,8 +88,14 @@ public class RegistrationActivity extends AppCompatActivity {
         btn_register = findViewById(R.id.btn_register);
         tvExist = findViewById(R.id.tvExist);
         etConfirmPassign = findViewById(R.id.etConfirmPassign);
-        etDate =(EditText)findViewById(R.id.etDate);
-        etBloodgroup =(EditText) findViewById(R.id.etBloodgroup);
+        etDate = findViewById(R.id.etDate);
+        etBloodgroup = findViewById(R.id.etBloodgroup);
+        etEmName1 = findViewById(R.id.etEmName1);
+        etEmName2 = findViewById(R.id.etEmName2);
+        etEmName3 = findViewById(R.id.etEmName3);
+        etEmNum1 = findViewById(R.id.etEmNum1);
+        etEmNum2 = findViewById(R.id.etEmNum2);
+        etEmNum3 = findViewById(R.id.etEmNum3);
     }
 
     private Boolean validate()
@@ -98,6 +106,13 @@ public class RegistrationActivity extends AppCompatActivity {
         name = etName.getText().toString();
         password = etPassign.getText().toString();
         email = etEmailsign.getText().toString();
+        emname1 = etEmName1.getText().toString();
+        emnum1 =etEmNum1.getText().toString();
+        emname2 = etEmName2.getText().toString();
+        emnum2 = etEmNum2.getText().toString();
+        emname3 = etEmName3.getText().toString();
+        emnum3 = etEmNum3.getText().toString();
+
         String confirmpass = etConfirmPassign.getText().toString();
 
         if(name.isEmpty() || password.isEmpty() || email.isEmpty())
@@ -106,8 +121,8 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         else
         {   if(password.equals(confirmpass))
-                result = true;
-            else
+            result = true;
+        else
             Toast.makeText(this, "Confirm password doesn't match with your password!", Toast.LENGTH_SHORT).show();
         }
         return result;
@@ -116,9 +131,9 @@ public class RegistrationActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseusers= firebaseDatabase.getReference(firebaseAuth.getUid());
         Userinfo user;
-        user = new Userinfo(name,email,date,bloodgrp);
+        user = new Userinfo(name,email,date,bloodgrp,emname1,emnum1,emname2,emnum2,emname3,emnum3);
         databaseusers.setValue(user);
-        
+
     }
 }
 

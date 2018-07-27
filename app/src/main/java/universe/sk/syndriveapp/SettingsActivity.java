@@ -137,11 +137,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
    private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(" Settings");
-        actionBar.setIcon(R.drawable.ic_settings_black);
-        actionBar.setDisplayUseLogoEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setIcon(R.drawable.ic_settings_black);
+            actionBar.setTitle("Settings");
+            actionBar.setDisplayUseLogoEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
     }
 
@@ -185,8 +189,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+            bindPreferenceSummaryToValue(findPreference("alert_time"));
 
         }
+
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {

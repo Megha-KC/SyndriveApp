@@ -1,14 +1,18 @@
 package universe.sk.syndriveapp;
 
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
+import java.util.Locale;
 
-public class AlertActivity extends AppCompatActivity {
+public class AlertActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
+    TextToSpeech tts;
     private TextView tvTime;
     private FloatingActionButton fabSend, fabDismiss;
 
@@ -19,6 +23,8 @@ public class AlertActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert);
+
+        tts = new TextToSpeech(AlertActivity.this, AlertActivity.this);
 
         tvTime = findViewById(R.id.tvTime);
         fabSend = findViewById(R.id.fabSend);
@@ -37,6 +43,7 @@ public class AlertActivity extends AppCompatActivity {
                     tvTime.setText("" + millisUntilFinished / 1000);
                     if(millisUntilFinished/1000 > 5) tvTime.setTextColor(getResources().getColor(R.color.black));
                     else tvTime.setTextColor(getResources().getColor(R.color.red));
+                    speakOut();
                 }
             }
 
@@ -46,6 +53,7 @@ public class AlertActivity extends AppCompatActivity {
                 tvTime.setTextColor(getResources().getColor(R.color.green));
                 fabDismiss.setEnabled(false);
                 fabSend.setEnabled(false);
+                speakOut();
             }
         }.start();
 
@@ -57,6 +65,8 @@ public class AlertActivity extends AppCompatActivity {
                 tvTime.setTextColor(getResources().getColor(R.color.green));
                 fabSend.setEnabled(false);
                 fabDismiss.setEnabled(false);
+
+                speakOut();
             }
         }); //end of Send button
 
@@ -68,8 +78,40 @@ public class AlertActivity extends AppCompatActivity {
                 tvTime.setTextColor(getResources().getColor(R.color.black));
                 fabSend.setEnabled(false);
                 fabDismiss.setEnabled(false);
+
+                speakOut();
             }
         }); //end of Dismiss button
 
+    } // end of onCreate
+
+    private void speakOut() {
+        String text = tvTime.getText().toString().trim();
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (tts!=null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            int result = tts.setLanguage(Locale.UK);
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "This Language is not supported!");
+            }
+            else {
+                speakOut();
+            }
+        }
+        else {
+            Log.e("TTS", "Initialization failed!");
+        }
     }
 }
